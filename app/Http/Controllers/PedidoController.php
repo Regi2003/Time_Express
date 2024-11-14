@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Pedido;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class PedidoController extends Controller
 {
@@ -36,7 +37,7 @@ class PedidoController extends Controller
             'fecha_pedido' => $request->fecha_pedido,
             'total' => $request->total
         ]);
-        //Alert::success('Éxito', 'El producto ha sido creado correctamente')->flash();
+        Alert::success('Éxito', 'El producto ha sido creado correctamente')->flash();
         return redirect()->route('pedido.list');
 
     }
@@ -66,14 +67,14 @@ class PedidoController extends Controller
         $pedido->save();
 
         return redirect()->route('pedido.list');
-        //Alert::success('Éxito', 'Los datos han sido guardados correctamente')->flash();
+        Alert::success('Éxito', 'Los datos han sido guardados correctamente')->flash();
     }
 
     public function destroy($id)
     {
         $pedido = Pedido::find($id);
         $pedido->delete();
-        //Alert::success('Éxito', 'El pedido ha sido eliminado correctamente')->flash();
+        Alert::danger('Éxito', 'El pedido ha sido eliminado correctamente')->flash();
         return redirect()->route('pedido.list');
     }
 
