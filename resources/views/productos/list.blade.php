@@ -21,16 +21,16 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($productos as $productos)
+    @foreach($productos as $producto)
         <tr>
-            <td>{{ $productos->id }}</td>
-            <td>{{ $productos->nombre }}</td>
-            <td>{{ $productos->descripcion }}</td>
-            <td>{{ $productos->precio }}</td>
-            <td>{{ $productos->inventario }}</td>
+            <td>{{ $producto->id }}</td>
+            <td>{{ $producto->nombre }}</td>
+            <td>{{ $producto->descripcion }}</td>
+            <td>{{ $producto->precio }}</td>
+            <td>{{ $producto->inventario }}</td>
             <td>
 <a href="{{ route('producto.edit', $producto->id) }}" class="btn btn-primary"> Editar </a>            <td>
-                <form action="{{ route('producto.productos.destroy', $productos->id)}}" method="post">
+                <form action="{{ route('producto.productos.destroy', $producto->id)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type='submit' class="btn btn-danger">
