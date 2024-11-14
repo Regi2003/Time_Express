@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductoController extends Controller
 {
@@ -36,7 +36,7 @@ class ProductoController extends Controller
             'precio' => $request->precio,
             'inventario' => $request->inventario
         ]);
-        //Alert::success('Éxito', 'El producto ha sido creado correctamente')->flash();
+        Alert::success('Éxito', 'El producto ha sido creado correctamente')->flash();
         return redirect()->route('producto.list');
 
     }
@@ -66,14 +66,14 @@ class ProductoController extends Controller
         $producto->save();
 
         return redirect()->route('producto.list');
-        //Alert::success('Éxito', 'Los datos han sido guardados correctamente')->flash();
+        Alert::success('Éxito', 'Los datos han sido guardados correctamente')->flash();
     }
 
     public function destroy($id)
     {
         $producto = Producto::find($id);
         $producto->delete();
-        //Alert::success('Éxito', 'El producto ha sido eliminado correctamente')->flash();
+        Alert::success('Éxito', 'El producto ha sido eliminado correctamente')->flash();
         return redirect()->route('producto.list');
     }
 }

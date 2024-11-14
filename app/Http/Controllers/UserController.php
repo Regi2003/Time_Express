@@ -38,7 +38,7 @@ class UserController extends Controller
             'password' => Hash::make($validate['password']),
             'rol' => $validate['rol'],
         ]);
-        //Alert::success('Éxito', 'El usuario ha sido creado correctamente')->flash();
+        Alert::success('Éxito', 'El usuario ha sido creado correctamente')->flash();
         return redirect()->route('user.list');
 
     }
@@ -65,14 +65,14 @@ class UserController extends Controller
         $usuario->save();
 
         return redirect()->route('user.list');
-        //Alert::success('Éxito', 'Los datos han sido guardados correctamente')->flash();
+        Alert::success('Éxito', 'Los datos han sido guardados correctamente')->flash();
     }
 
     public function destroy($id)
     {
         $usuario = User::find($id);
         $usuario->delete();
-        //Alert::success('Éxito', 'El usuario ha sido eliminado correctamente')->flash();
+        Alert::success('Éxito', 'El usuario ha sido eliminado correctamente')->flash();
         return redirect()->route('user.list');
     }
 }
