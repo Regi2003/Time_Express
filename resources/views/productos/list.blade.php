@@ -2,7 +2,26 @@
 
 @section('title', 'Lista de productos')
 
+@include('sweetalert::alert')
+
+<!-- @if (session('alert'))
+    @php
+        $alert = session('alert');
+    @endphp
+
+        @if(isset($alert['type']) && isset($alert['message']))
+            <script>
+                swal("{{ $alert['message'] }}", "", "{{ $alert['type'] }}");
+            </script>
+        @endif
+    @endif -->
+
+
+
+
+
 @section('content')
+
 <h1>PRODUCTOS</h1>
 <div class="text-end">
     <a href="{{ route('producto.create') }}" class="btn btn-primary">CREAR</a>
@@ -29,8 +48,8 @@
             <td>{{ $producto->precio }}</td>
             <td>{{ $producto->inventario }}</td>
             <td>
-<a href="{{ route('producto.edit', $producto->id) }}" class="btn btn-primary"> Editar </a>            <td>
-                <form action="{{ route('producto.productos.destroy', $producto->id)}}" method="post">
+<a href="{{ route('producto.update', $producto->id) }}" class="btn btn-primary"> Editar </a>            <td>
+                <form action="{{ route('producto.destroy', $producto->id)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button type='submit' class="btn btn-danger">
