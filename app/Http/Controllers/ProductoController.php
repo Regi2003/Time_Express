@@ -37,7 +37,7 @@ class ProductoController extends Controller
             'inventario' => $request->inventario
         ]);
         //Alert::success('Éxito', 'El producto ha sido creado correctamente')->flash();
-        return redirect()->route('pedido.list');
+        return redirect()->route('producto.list');
 
     }
 
